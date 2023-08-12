@@ -1,10 +1,12 @@
 package com.mx.proyecto.RepositoryImpl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
 import org.hibernate.Criteria;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -36,6 +38,20 @@ public class UsuariosAdminDAOImpl2 extends GenericDAO<UsuariosAdmin, Long> imple
 		criteria.add(Restrictions.eq("estado", estado));//WHERE ESTADO
 		
 		return (UsuariosAdmin) criteria.uniqueResult();//ESPERA UN UNICO RESULTADO
+	}
+
+	
+	//METODO PARA CONSULTAR EL IDE SIGUIENTE POR MEDIO DE LA SECUENCIA
+	@Override
+	@Transactional
+	public Long obtenValorSecuenciaTabla() {
+		
+		String sqlSequence = "SELECT SEQ_USUARIOS_ADMIN.NEXTVAL AS SECUENCIAUSER FROM DUAL";
+		Session session = sessionFactory.getCurrentSession();
+		SQLQuery query = session.createSQLQuery(sqlSequence);
+		List result = query.list();
+		
+		return ((BigDecimal) result.get(0)).longValue();
 	}
 
 	

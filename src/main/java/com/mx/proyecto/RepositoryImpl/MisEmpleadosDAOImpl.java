@@ -100,7 +100,9 @@ public class MisEmpleadosDAOImpl extends GenericDAO<MisEmpleados, Long> implemen
 	}
 
 	@Override
-	public MisEmpleados consultaExistencia(String curp, String rfc) {
+	@Transactional
+	public MisEmpleados consultaExistencia(String rfc, String curp) {
+		System.out.println("Informacion a buscar " + curp + rfc);
 		final Session session = sessionFactory.getCurrentSession();
 		final Criteria criteria = session.createCriteria(MisEmpleados.class);//ESTO REPRESENTA EL SELECT * FROM TABLA
 		

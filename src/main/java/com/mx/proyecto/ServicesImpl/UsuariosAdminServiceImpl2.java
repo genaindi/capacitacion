@@ -93,9 +93,10 @@ public class UsuariosAdminServiceImpl2 implements UsuariosAdminService2{//CAPA D
 				if(nuevoUsuario.getNombreCompleto() !=null && !nuevoUsuario.getNombreCompleto().isEmpty() 
 						&& nuevoUsuario.getEdad() !=0 && nuevoUsuario.getDireccion() !=null 
 						&& !nuevoUsuario.getDireccion().isEmpty()) {
-				
+					
 				UsuariosAdmin datos = new UsuariosAdmin();
-				datos.setIdUser(nuevoUsuario.getIdUser());
+				datos.setIdUser(nuevoUsuario.getIdUser());//--> ESTA SE PODRIA USAR PARA PRUEBAS
+				datos.setIdUser(usuariosAdminDAO2.obtenValorSecuenciaTabla());//CONSULTANDO SECUENCIA.NEXTVAL
 				datos.setNombreCompleto(nuevoUsuario.getNombreCompleto());
 				datos.setEdad(nuevoUsuario.getEdad());
 				datos.setDireccion(nuevoUsuario.getDireccion());

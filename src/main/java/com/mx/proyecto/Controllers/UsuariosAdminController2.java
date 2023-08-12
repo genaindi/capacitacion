@@ -22,6 +22,14 @@ public class UsuariosAdminController2 {
 	@Autowired
 	private UsuariosAdminService2 usuariosAdminService2;//es la inyeccion de dependencias
 	
+	@RequestMapping(value="/vistaUsuarios")// SERVICIO PARA REDIRECCIONAR AL MODULO USUARIOS ADMIN
+	public String redireccionaVistasUsuarios() {
+		
+		return "VistasUsuariosAdmin";//REDIRECCIONA A LA VISTA DE USUARIOS ADMIN
+		
+	}
+	
+	
 	@ResponseBody //NOS PERMITE RETORNAR DATOS Y NO SOLO UNA VISTA
 	@RequestMapping(value="/getUsuariosAdmin", method= RequestMethod.GET, produces = "application/json")
 	public ResponseDto  getUsuariosAdmin(){

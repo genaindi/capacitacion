@@ -226,13 +226,13 @@ public class MisEmpleadosServiceImpl implements MisEmpleadosService{
 
 	@Override
 	public ResponseDto insertMisEmpleados3(MisEmpleadosDTO nuevoUsuario) {
-ResponseDto responde = new ResponseDto();
+		ResponseDto responde = new ResponseDto();
 		
 		try {
 
 			MisEmpleados consultaNombre = misEmpleadosDAO.consultaExistencia(nuevoUsuario.getRfc(), nuevoUsuario.getCurp());
-
-			if (consultaNombre.getRfc() == null && consultaNombre.getCurp() == null) {
+				System.out.println("Consulta dato " + consultaNombre);
+			if (consultaNombre == null) {
 
 				MisEmpleados insertar = new MisEmpleados();
 				insertar.setIdEmpleado(nuevoUsuario.getIdEmpleado());

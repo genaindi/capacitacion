@@ -5,6 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 
@@ -14,7 +15,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @ComponentScan("com.mx.proyecto") //SIRVE PARA INDICARLE A SPRING QUE SOBRE ESE 
 //PAQUETE VA A BUSCAR AQUELLAS CLASES QUE NOSOTROS HAYAMOS
 //AFILIADO/INTEGRADO A SPRING CON LAS ANOTACIONES
-public class WebConfig {
+public class WebConfig extends WebMvcConfigurerAdapter{
 
 	  @Bean
 	  public InternalResourceViewResolver resolver() {
@@ -23,6 +24,8 @@ public class WebConfig {
 			resol.setSuffix(".jsp");
 			return resol;
 	  }  
+	  
+	  @Override
 	    public void addResourceHandlers(ResourceHandlerRegistry registry) {
 	        registry
 	          .addResourceHandler("/resources/**")

@@ -10,9 +10,21 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
 import com.mx.proyecto.Entity.MisEmpleados;
 import com.mx.proyecto.Entity.UsuariosAdmin;
+import com.mx.proyecto.Entity.Afore;
+import com.mx.proyecto.Entity.catEstados;
+import com.mx.proyecto.Entity.catRoles;
+import com.mx.proyecto.Entity.AnioEntity;
+import com.mx.proyecto.Entity.MesEntity;
+import com.mx.proyecto.Entity.EstatusActividadEntity;
+import com.mx.proyecto.Entity.TipoTrabajadorEntity;
+import com.mx.proyecto.Entity.EstatusCuentaEntity;
+import com.mx.proyecto.Entity.CodigoOrigenEntity;
+import com.mx.proyecto.Entity.RegimenAfilEntity;
+import com.mx.proyecto.Entity.IndicadorSaldoEntity;
+
+
 
 @Configuration // para decirle que es de configuracion
 @ComponentScan("com.mx.proyecto")//Mapear/buscar entres estos paquetes
@@ -33,7 +45,9 @@ public class ApplicationContextConfig {
     public SessionFactory getSessionFactory(DataSource dataSource) {
     	LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
     	sessionBuilder.addProperties(getHibernateProperties());
-    	sessionBuilder.addAnnotatedClasses(UsuariosAdmin.class, MisEmpleados.class); // Declarar todas clases Entitys para poder hacer las transacciones por Hibernate.
+    	sessionBuilder.addAnnotatedClasses(UsuariosAdmin.class, MisEmpleados.class, Afore.class, catEstados.class,
+    	catRoles.class, AnioEntity.class, MesEntity.class, EstatusActividadEntity.class, TipoTrabajadorEntity.class,
+    	EstatusCuentaEntity.class, CodigoOrigenEntity.class, RegimenAfilEntity.class, IndicadorSaldoEntity.class); // Declarar todas clases Entitys para poder hacer las transacciones por Hibernate.
     	return sessionBuilder.buildSessionFactory();
     }
     
